@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import quest.blog.business.abstracts.CommentService;
 import quest.blog.entities.Comment;
 import quest.blog.entities.dtos.CommentCreateRequest;
+import quest.blog.entities.dtos.CommentResponse;
 import quest.blog.entities.dtos.CommentUpdateRequest;
 
 @RestController
 @RequestMapping("/comments")
+@CrossOrigin
 public class CommentController {
     
     private CommentService commentService;
@@ -31,7 +34,7 @@ public class CommentController {
     }
 
     @GetMapping
-    public List<Comment> getAllComment(@RequestParam Optional<Long> userId , @RequestParam Optional<Long> postId ){
+    public List<CommentResponse> getAllComment(@RequestParam Optional<Long> userId , @RequestParam Optional<Long> postId ){
         return commentService.getAllCommentsWithParam(userId,postId);
     }
 

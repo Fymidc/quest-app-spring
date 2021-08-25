@@ -2,6 +2,8 @@ package quest.blog.business.concretes;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import quest.blog.entities.Comment;
 import quest.blog.entities.Post;
 import quest.blog.entities.User;
 import quest.blog.entities.dtos.CommentCreateRequest;
+import quest.blog.entities.dtos.CommentResponse;
 import quest.blog.entities.dtos.CommentUpdateRequest;
 
 @Service
@@ -32,16 +35,20 @@ public class CommentManager implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllCommentsWithParam(Optional<Long> userId, Optional<Long> postId) {
+    public List<CommentResponse> getAllCommentsWithParam(Optional<Long> userId, Optional<Long> postId) {
+        List<Comment> list;
         if(userId.isPresent() && postId.isPresent()){
-            return commentDao.findByUserIdAndPostId(userId.get(),postId.get());
+            list = commentDao.findByUserIdAndPostId(userId.get(),postId.get());
         }else if(userId.isPresent()){
-            return commentDao.findByUserId(userId.get());
+            list  = commentDao.findByUserId(userId.get());
         }else if (postId.isPresent()){
-            return commentDao.findByPostId(postId.get());
-        }else
-            return commentDao.findAll();
+            list = commentDao.findByPostId(postId.get());
+        }else{
+            list = commentDao.findAll();
+        }
         
+        return  list.stream().map(p->new CommentResponse(p)).collect(Collectors.toList());
+
     }
 
     @Override

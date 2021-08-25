@@ -5,11 +5,12 @@ import java.util.Optional;
 
 import quest.blog.entities.Comment;
 import quest.blog.entities.dtos.CommentCreateRequest;
+import quest.blog.entities.dtos.CommentResponse;
 import quest.blog.entities.dtos.CommentUpdateRequest;
 
 public interface CommentService {
 
-    List<Comment> getAllCommentsWithParam(Optional<Long> userId, Optional<Long> postId);
+    List<CommentResponse> getAllCommentsWithParam(Optional<Long> userId, Optional<Long> postId);
 
     Comment getOneCommentById(Long commentId);
 

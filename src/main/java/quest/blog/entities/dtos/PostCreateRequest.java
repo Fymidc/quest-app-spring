@@ -9,14 +9,7 @@ public class PostCreateRequest {
     private Long userId;
 
     
-    public PostCreateRequest() {
-    }
-    public PostCreateRequest(Long id, String text, String title, Long userId) {
-        this.id = id;
-        this.text = text;
-        this.title = title;
-        this.userId = userId;
-    }
+    
     public Long getId() {
         return id;
     }

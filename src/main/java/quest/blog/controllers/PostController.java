@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import quest.blog.business.abstracts.PostService;
 import quest.blog.entities.Post;
 import quest.blog.entities.dtos.PostCreateRequest;
+import quest.blog.entities.dtos.PostResponse;
 import quest.blog.entities.dtos.PostUpdateRequest;
 
 @RestController
 @RequestMapping("/posts")
+@CrossOrigin
 public class PostController {
     
     private PostService postService;
@@ -33,7 +36,7 @@ public class PostController {
 
     //optional geledebilir gelmeyedebilir
     @GetMapping
-    public List<Post> getAllPosts(@RequestParam Optional<Long> userId){
+    public List<PostResponse> getAllPosts(@RequestParam Optional<Long> userId){
         return postService.getAllPost(userId);
     }
     
