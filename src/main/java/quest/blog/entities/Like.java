@@ -2,6 +2,8 @@ package quest.blog.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Like {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,9 +35,8 @@ public class Like {
     private User user;
     
 
-    public Like() {
-    }
-
+    public Like() {}
+    
     public Like(Long id, Post post, User user) {
         this.id = id;
         this.post = post;

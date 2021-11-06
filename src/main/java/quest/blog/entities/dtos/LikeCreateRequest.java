@@ -7,13 +7,13 @@ public class LikeCreateRequest {
 
 
     
-    public LikeCreateRequest() {
-    }
-    public LikeCreateRequest(Long id, Long userId, Long postId) {
-        this.id = id;
-        this.userId = userId;
-        this.postId = postId;
-    }
+     public LikeCreateRequest() {
+     }
+     public LikeCreateRequest(Long id, Long userId, Long postId) {
+         this.id = id;
+         this.userId = userId;
+         this.postId = postId;
+     }
     public Long getId() {
         return id;
     }

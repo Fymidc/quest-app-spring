@@ -36,9 +36,9 @@ public class LikeManager implements LikeService {
         if(userId.isPresent() && postId.isPresent()){
             return likeDao.findByUserIdAndPostId(userId.get(),postId.get());
         }else if (userId.isPresent()){
-            return likeDao.findByUserId(userId);
+            return likeDao.findByUserId(userId.get());
         }else if(postId.isPresent()){
-            return likeDao.findByPostId(postId);
+            return likeDao.findByPostId(postId.get());
         }else
             return likeDao.findAll();
     }
@@ -65,9 +65,9 @@ public class LikeManager implements LikeService {
             likeToSave.setUser(user);
             likeToSave.setPost(post);
             return likeDao.save(likeToSave);
-        }else 
+        }else {
             return null;
-
+        }
     }
     
 }

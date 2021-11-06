@@ -65,5 +65,11 @@ public class UserManager implements UserService{
         userDao.deleteById(userId);
         
     }
+
+    @Override
+    public User getOneUserByUserName(String userName) {
+       
+        return userDao.findByUserName(userName);
+    }
     
 }
