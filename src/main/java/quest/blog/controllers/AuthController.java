@@ -58,6 +58,6 @@ public class AuthController {
         return new ResponseEntity<>("user succesfully registered ",HttpStatus.CREATED);
     }
 
-//50.25 de kaldım
+
 
 }
