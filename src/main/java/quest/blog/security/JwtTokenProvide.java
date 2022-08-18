@@ -73,4 +73,3 @@ public class JwtTokenProvide {
 
 }
 
-//24,09 da kaldım 
